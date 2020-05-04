@@ -27,10 +27,13 @@ for /D %%x in ("%SystemDrive%\Users\*") do (
 		del /F /Q "%%x\Documents\*.tmp" 2>NUL
 	)
 :: JOB: Root drive garbage (usually C drive)
-rmdir /S /Q %SystemDrive%\Temp 2>NUL
+rmdir /S /Q %SystemDrive%\windows\Logs 2>NUL
 for %%i in (bat,txt,log,jpg,jpeg,tmp,bak,backup,exe) do (
 	del /F /Q "%SystemDrive%\*.%%i" 2>NUL
+    del /F /S /Q "%WINDIR%\Log\CBS\*.%%i" 2>NUL
+    del /F /S /Q "%WINDIR%\Installer\*.%%i" 2>NUL
 )
+
 
 :: JOB: Remove files left over from installing Nvidia/ATI/AMD/Dell/Intel/HP drivers
 for %%i in (NVIDIA,ATI,AMD,Dell,Intel,HP) do (
@@ -74,5 +77,6 @@ del /F /Q %WINDIR%\Web\Wallpaper\*.* 2>NUL
 rmdir /S /Q %WINDIR%\Web\Wallpaper\Dell 2>NUL
 
 :: JOB: Windows CBS logs
-::      these only exist on Vista and up, so we look for "Microsoft", and assuming we don't find it, clear out the folder
+::      these only exist on Vista's and up, so we look for "Microsoft", and assuming we don't find it, clear out the folder
 del /F /Q %WINDIR%\Logs\CBS\* 2>NUL
+
