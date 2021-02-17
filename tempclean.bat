@@ -80,3 +80,4 @@ rmdir /S /Q %WINDIR%\Web\Wallpaper\Dell 2>NUL
 ::      these only exist on Vista's and up, so we look for "Microsoft", and assuming we don't find it, clear out the folder
 del /F /Q %WINDIR%\Logs\CBS\* 2>NUL
 
+
